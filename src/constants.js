@@ -1,0 +1,2 @@
+export const LOAD_ALL_BOOKS = "LOAD_ALL_BOOKS";
+export const LOAD_ALL_ARTICLES = "LOAD_ALL_ARTICLES";

@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    font-size: 18pt;
+    font-family: Tahoma, Verdana, Arial;
+}
+
+#main {
+    margin: 12px;
+}
+
+#new-todo {
+    height: 32px;
+    line-height: 28px;
+    font-family: Tahoma, Verdana, Arial;
+    width: 240px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a.del {
+    display: inline-block;
+    width: 42px;
+    text-align: center;
+    margin-left: -120px;
+    color: #ccc;
+}
+
+a.del:hover {
+    display: inline-block;
+    color: White;
+    background-color: Red;
+}
+
+a.btn-common {
+    color: #c0c0c0;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+a.btn-common:hover {
+    color: Gray;
+}
+
+li.task {
+    cursor: default;
+    margin-left: 80px;
+}
+
+li.task span {
+    margin-left: 64px;
+}
+
+#list-ready li.task {
+    list-style-type: none;
+    opacity: 0.5;
+    color: Gray;
+}
+
+#list-ready li.task span {
+    text-decoration: line-through;
+}
