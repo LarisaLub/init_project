@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadAllArticles } from "../AC";
+import { loadAllbook } from "../AC";
 
 class Books extends Component {
     componentDidMount() {
         this.props.onLoadAllArticles();
     }
     render() {
-        console.log(this.props.books);
-        return <div>Books</div>;
+        return (
+            <div>
+                <button> interesting places</button> <br />
+                <button> close interesting places</button>
+            </div>
+        );
     }
 }
 
@@ -21,7 +25,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onLoadAllArticles: () => {
-            dispatch(loadAllArticles());
+            dispatch(loadAllbook());
         }
     };
 };

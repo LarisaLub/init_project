@@ -3,10 +3,16 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "react": "16.5.0",
-        "react-dom": "16.5.0",
+        "google-map-react": "^1.0.9",
+        "react": "^16.5.0",
+        "react-dom": "^16.5.0",
+        "react-google-maps": "^9.4.5",
+        "react-js-google-maps": "^1.5.2",
         "react-redux": "5.0.7",
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
         "react-scripts": "1.1.5",
+        "reactstrap": "^6.5.0",
         "redux": "4.0.0",
         "redux-thunk": "^2.3.0"
     },

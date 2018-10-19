@@ -1,14 +1,10 @@
-import { LOAD_ALL_BOOKS } from "../constants";
-import { LOAD_ALL_ARTICLES } from "../constants";
+import { LOAD_ALL_BOOKS, MAPS } from "../constants";
 
-export const book = loadAllbook => {
+export const loadAllbook = () => {
     return dispatch => {
-        dispatch({
-            type: LOAD_ALL_BOOKS,
-            payload: book
-        });
-
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=толстой`)
+        fetch(
+            `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`
+        )
             .then(res => {
                 return res.json();
             })
@@ -21,9 +17,9 @@ export const book = loadAllbook => {
     };
 };
 
-export const loadAllArticles = loadAllArticles => {
+export const maps = maps => {
     return {
-        type: LOAD_ALL_ARTICLES,
-        payload: loadAllArticles
+        type: MAPS,
+        payload: maps
     };
 };
