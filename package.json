@@ -5,6 +5,7 @@
     "dependencies": {
         "@material-ui/core": "^3.2.2",
         "axios": "^0.18.0",
+        "contentful": "^7.0.5",
         "google-map-react": "^1.0.9",
         "react": "^16.5.0",
         "react-dom": "^16.5.0",

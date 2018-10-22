@@ -11,6 +11,8 @@ import "typeface-roboto";
 import Collapse from "@material-ui/core/Collapse";
 import Plases from "./components/Plases";
 import GoogleMapReact from "google-map-react";
+import ListPlases from "./components/ListPlases";
+
 //import Paper from "material-ui/Paper";
 //import Typography from "material-ui/Typography";
 //import { typography } from "material-ui/styles";
@@ -24,14 +26,15 @@ class App extends Component {
                         <div>
                             <h2>
                                 <div>
-                                    <NavLink to="/plases">Plases</NavLink>
+                                    <NavLink to="/plases">Places-restaurants</NavLink>
                                 </div>
+                                <div>_______________________________________________</div>
                                 <div>
                                     <NavLink to="/maps">Maps</NavLink>
                                 </div>
                             </h2>
                         </div>
-                        <Route path="/plases" component={Plases} />
+                        <Route path="/plases" component={ListPlases} />
                         <Route path="/maps" component={Maps} />
                     </div>
                 </Provider>

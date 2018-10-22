@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadAllplases } from "../AC";
+import ListPlases from "./ListPlases";
 
 class Plases extends Component {
     componentDidMount() {
@@ -8,13 +9,14 @@ class Plases extends Component {
     }
 
     render() {
-        console.log(this.props.plases);
+        // console.log(this.props.plases);
         if (!this.props.plases) return null;
         return (
             <div className="Plases">
                 {this.props.plases.map(plase => (
                     <p key={plase.id}>{plase.title}</p>
                 ))}
+                <ListPlases />
             </div>
         );
     }
