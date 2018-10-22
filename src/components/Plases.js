@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadAllbook } from "../AC";
+import { loadAllplases } from "../AC";
 
-class Books extends Component {
+class Plases extends Component {
     componentDidMount() {
         this.props.onLoadAllArticles();
     }
+
     render() {
+        console.log(this.props.plases);
+        if (!this.props.plases) return null;
         return (
-            <div>
-                <button> interesting places</button> <br />
-                <button> close interesting places</button>
+            <div className="Plases">
+                {this.props.plases.map(plase => (
+                    <p key={plase.id}>{plase.title}</p>
+                ))}
             </div>
         );
     }
@@ -18,14 +22,14 @@ class Books extends Component {
 
 const mapStateToProps = state => {
     return {
-        books: state.books.books
+        plases: state.plases.plases
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onLoadAllArticles: () => {
-            dispatch(loadAllbook());
+            dispatch(loadAllplases());
         }
     };
 };
@@ -33,4 +37,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Books);
+)(Plases);

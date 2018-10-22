@@ -1,2 +1,2 @@
-export const LOAD_ALL_BOOKS = "LOAD_ALL_BOOKS";
+export const LOAD_ALL_PLASES = "LOAD_ALL_PLASES";
 export const MAPS = "MAPS";

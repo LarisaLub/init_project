@@ -1,17 +1,17 @@
-import { LOAD_ALL_BOOKS, MAPS } from "../constants";
+import { LOAD_ALL_PLASES, MAPS } from "../constants";
 
-export const loadAllbook = () => {
+export const loadAllplases = () => {
     return dispatch => {
         fetch(
-            `https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places`
+            `https://places.demo.api.here.com/places/v1/discover/search?at=50.4501%2C30.5234&q=restaurant&app_id=DemoAppId01082013GAL&app_code=AJKnXv84fjrb0KIHawS0Tg`
         )
             .then(res => {
                 return res.json();
             })
             .then(response =>
                 dispatch({
-                    type: LOAD_ALL_BOOKS,
-                    payload: response.items
+                    type: LOAD_ALL_PLASES,
+                    payload: response
                 })
             );
     };

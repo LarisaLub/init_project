@@ -1,16 +1,16 @@
-import { LOAD_ALL_BOOKS } from "../constants";
+import { LOAD_ALL_PLASES } from "../constants";
 
 const defaultState = {
-    books: null
+    plases: null
 };
 
 export default (state = defaultState, action) => {
     const { type, payload } = action;
     switch (type) {
-        case LOAD_ALL_BOOKS:
+        case LOAD_ALL_PLASES:
             return {
                 ...state,
-                books: payload
+                plases: payload.results.items
             };
         default:
             return state;

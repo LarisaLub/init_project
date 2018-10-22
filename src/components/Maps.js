@@ -2,49 +2,32 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { maps } from "../AC";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import Map from "react-js-google-maps";
+//import Map from "react-js-google-maps";
+import GoogleMapReact from "google-map-react";
 
-class MyMapComponent extends Component {
-    componentDidMount() {
-        this.props.onLoadAllMaps();
-    }
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
+class Maps extends Component {
+    static defaultProps = {
+        center: {
+            lat: 50.4501,
+            lng: 30.5234
+        },
+        zoom: 13
+    };
+
     render() {
         return (
-            <div>
-                <h3>My Google Maps Demo</h3>
-                <Map
-                    id="map1"
-                    apiKey="AIzaSyB2FOJ-CCXg67ZLxNexgBAfDpwmDtWVYtI"
-                    // mapOptions={mapOptions}
-                    style={{ width: "100%", height: 480 }}
-                    // onLoad={this.onMapLoad}
-                />
+            <div style={{ height: "100vh", width: "100%" }}>
+                <GoogleMapReact
+                    bootstrapURLKeys={{ key: "AIzaSyB2FOJ-CCXg67ZLxNexgBAfDpwmDtWVYtI" }}
+                    defaultCenter={this.props.center}
+                    defaultZoom={this.props.zoom}>
+                    <AnyReactComponent lat={50.4501} lng={30.5234} text={"restaurant"} />
+                </GoogleMapReact>
             </div>
         );
     }
 }
 
-const map = withScriptjs(
-    withGoogleMap(props => (
-        <GoogleMap defaultZoom={8} defaultCenter={{ lat: 50.4501, lng: 30.5234 }} />
-    ))
-);
-
-const mapStateToProps = state => {
-    return {
-        maps: state.maps.maps
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onLoadAllMaps: () => {
-            dispatch(maps());
-        }
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(MyMapComponent);
+export default Maps;

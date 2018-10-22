@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import books from "./books";
 import maps from "./maps";
+import plases from "./plases";
 
 export default combineReducers({
-    books,
+    plases,
     maps
 });
