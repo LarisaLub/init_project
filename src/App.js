@@ -2,20 +2,12 @@ import React, { Component } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
 
-import "./App.css";
-import { HashRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Maps from "./components/Maps";
-import { GoogleMap, Marker } from "react-google-maps";
-import Button from "@material-ui/core/Button";
-import "typeface-roboto";
-import Collapse from "@material-ui/core/Collapse";
-import Plases from "./components/Plases";
-import GoogleMapReact from "google-map-react";
-import ListPlases from "./components/ListPlases";
 
-//import Paper from "material-ui/Paper";
-//import Typography from "material-ui/Typography";
-//import { typography } from "material-ui/styles";
+import "./App.css";
+
+import ListPlases from "./components/ListPlases";
 
 class App extends Component {
     render() {
@@ -23,19 +15,12 @@ class App extends Component {
             <Router>
                 <Provider store={store}>
                     <div className="App">
-                        <div>
-                            <h2>
-                                <div>
-                                    <NavLink to="/plases">Places-restaurants</NavLink>
-                                </div>
-                                <div>_______________________________________________</div>
-                                <div>
-                                    <NavLink to="/maps">Maps</NavLink>
-                                </div>
-                            </h2>
-                        </div>
-                        <Route path="/plases" component={ListPlases} />
-                        <Route path="/maps" component={Maps} />
+                        <h2>
+                            <NavLink to="/plases">Places-restaurants</NavLink>
+                        </h2>
+
+                        <Route path="/plases/" component={ListPlases} />
+                        <Route path="/maps/:id" component={Maps} />
                     </div>
                 </Provider>
             </Router>
