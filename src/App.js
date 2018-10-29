@@ -4,10 +4,11 @@ import { Provider } from "react-redux";
 
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Maps from "./components/Maps";
-
-import "./App.css";
-
 import ListPlases from "./components/ListPlases";
+import "./App.css";
+//import Markers from "./components/Markers";
+
+//import MapsNav from "./components/MapsNav";
 
 class App extends Component {
     render() {
