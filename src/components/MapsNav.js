@@ -43,7 +43,8 @@ MapsNav.propTypes = {...MapsNav.propTypes, ...geoPropTypes};
         altitudeAccuracy,
         heading,
         speed,
-    }    
+    }
+        
    // isGeolocationAvailable, 
     //isGeolocationEnabled, 
    // positionError, 
