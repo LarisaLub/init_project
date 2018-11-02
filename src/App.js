@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import store from "./store";
+import store from "./redux/store";
 import { Provider } from "react-redux";
-
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Maps from "./components/Maps";
 import ListPlases from "./components/ListPlases";
-import "./App.css";
-//import Markers from "./components/Markers";
-
-//import MapsNav from "./components/MapsNav";
+import Directions from "./components/Directions";
 
 class App extends Component {
     render() {
@@ -22,6 +18,7 @@ class App extends Component {
 
                         <Route path="/plases/" component={ListPlases} />
                         <Route path="/maps/:id" component={Maps} />
+                        <Route path="/maps/:id" component={Directions} />
                     </div>
                 </Provider>
             </Router>

@@ -1,16 +1,16 @@
-import { LOAD_ALL_PLASES } from "../constants";
+import { MAPS } from "../reducer/../constants";
 
 const defaultState = {
-    plases: null
+    maps: null
 };
 
 export default (state = defaultState, action) => {
     const { type, payload } = action;
     switch (type) {
-        case LOAD_ALL_PLASES:
+        case MAPS:
             return {
                 ...state,
-                plases: payload.results.items
+                maps: payload
             };
         default:
             return state;

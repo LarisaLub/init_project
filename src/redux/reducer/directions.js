@@ -1,4 +1,4 @@
-import { MAPS } from "../constants";
+import { DIRECTIONS } from "../reducer/../constants";
 
 const defaultState = {
     maps: null
@@ -7,10 +7,10 @@ const defaultState = {
 export default (state = defaultState, action) => {
     const { type, payload } = action;
     switch (type) {
-        case MAPS:
+        case DIRECTIONS:
             return {
                 ...state,
-                maps: payload
+                directions: payload
             };
         default:
             return state;

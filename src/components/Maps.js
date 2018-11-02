@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import GoogleMapReact from "google-map-react";
 
-import { geolocated } from "react-geolocated";
-
 import { selectPlases } from "../filter";
 
-import pinImage from "../assets/pin.png";
-
-// const pinComponent = () => ;
+import pinImage from "../assets/images/pin.png";
 
 const AnyReactComponent = ({ text }) => (
     <div>
@@ -19,13 +15,16 @@ const AnyReactComponent = ({ text }) => (
 );
 
 class Maps extends Component {
-    static defaultProps = {
-        center: {
-            lat: 50.4501,
-            lng: 30.5234
-        },
-        zoom: 13
-    };
+    static getDefaultProps() {
+        return {
+            center: {
+                lat: 50.4501,
+                lng: 30.5234
+            },
+            zoom: 13
+        };
+    }
+
     state = {
         center: {
             lat: 0,
@@ -36,21 +35,14 @@ class Maps extends Component {
     };
 
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                this.setState({
-                    center: {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    }
-                });
-            },
-            error => {
-                if (error.PERMISSION_DENIED) {
-                    console.log("В доступе отказано!");
+        navigator.geolocation.getCurrentPosition(position => {
+            this.setState({
+                center: {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
                 }
-            }
-        );
+            });
+        });
     }
 
     render() {
@@ -61,7 +53,6 @@ class Maps extends Component {
             <div style={{ height: "100vh", width: "100%" }}>
                 <GoogleMapReact
                     onClick={evt => {
-                        console.log(evt);
                         this.setState({
                             markerForRoute: {
                                 lat: evt.lat,
@@ -96,7 +87,4 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(Maps);
+export default connect(mapStateToProps)(Maps);

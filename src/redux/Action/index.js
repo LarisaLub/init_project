@@ -1,9 +1,9 @@
-import { LOAD_ALL_PLASES, MAPS } from "../constants";
+import { LOAD_ALL_PLASES, MAPS, DIRECTIONS } from "../Action/../constants";
 
 export const loadAllplases = () => {
     return dispatch => {
         fetch(
-            `https://places.demo.api.here.com/places/v1/discover/search?at=50.4501%2C30.5234&q=restaurant&app_id=DemoAppId01082013GAL&app_code=AJKnXv84fjrb0KIHawS0Tg`
+            "https://places.demo.api.here.com/places/v1/discover/search?at=50.4501%2C30.5234&q=restaurant&app_id=DemoAppId01082013GAL&app_code=AJKnXv84fjrb0KIHawS0Tg"
         )
             .then(res => {
                 return res.json();
@@ -21,5 +21,12 @@ export const maps = maps => {
     return {
         type: MAPS,
         payload: maps
+    };
+};
+
+export const directions = directions => {
+    return {
+        type: DIRECTIONS,
+        payload: directions
     };
 };
