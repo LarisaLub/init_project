@@ -18,7 +18,6 @@ class App extends Component {
 
                         <Route path="/plases/" component={ListPlases} />
                         <Route path="/maps/:id" component={Maps} />
-                        <Route path="/maps/:id" component={Directions} />
                     </div>
                 </Provider>
             </Router>

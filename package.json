@@ -18,6 +18,7 @@
         "react-router-dom": "^4.3.1",
         "react-scripts": "1.1.5",
         "reactstrap": "^6.5.0",
+        "recompose": "^0.30.0",
         "redux": "4.0.0",
         "redux-thunk": "^2.3.0",
         "typeface-roboto": "0.0.54"

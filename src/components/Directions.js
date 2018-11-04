@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
-
+import { DirectionsRenderer } from "react-google-maps";
 class Directions extends Component {
     state = {};
 
