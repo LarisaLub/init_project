@@ -1,21 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import GoogleMapReact from "google-map-react";
 import {
     withScriptjs,
     withGoogleMap,
     GoogleMap,
-    DirectionsRenderer,
+    Polyline,
     Marker
 } from "react-google-maps";
 import { selectPlases } from "../filter";
 import { compose, withProps, lifecycle } from "recompose";
-import pinImage from "../assets/images/pin.png";
 
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
         <GoogleMap
-            defaultZoom={8}
+            defaultZoom={13}
             defaultCenter={{ lat: props.lat, lng: props.lng }}
             onClick={evt => {
                 console.log(evt);
@@ -29,6 +27,12 @@ const MyMapComponent = withScriptjs(
                     position={{ lat: props.newMarker.lat, lng: props.newMarker.lng }}
                 />
             )}
+            <Polyline
+                path={[
+                    { lat: props.lat, lng: props.lng },
+                    { lat: props.newMarker.lat, lng: props.newMarker.lng }
+                ]}
+            />
         </GoogleMap>
     ))
 );
@@ -63,9 +67,7 @@ class Maps extends Component {
     }
 
     render() {
-        const { center, zoom, markerForRoute, newMarker } = this.state;
-        if (!center.lat) return null;
-        //bootstrapURLKeys={{ key: "AIzaSyB2FOJ-CCXg67ZLxNexgBAfDpwmDtWVYtI" }}
+        const { center, newMarker } = this.state;
 
         return (
             <div style={{ height: "100vh", width: "100%" }}>
@@ -73,13 +75,14 @@ class Maps extends Component {
                     isMarkerShown
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                     loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `400px` }} />}
+                    containerElement={<div style={{ height: `700px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                     lat={center.lat}
                     lng={center.lng}
                     onClick={evt => {}}
                     handleNewMarker={this.handleNewMarker}
                     newMarker={newMarker}
+                />
                 />
             </div>
         );

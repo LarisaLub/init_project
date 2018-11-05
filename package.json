@@ -13,6 +13,8 @@
         "react-dom": "^16.5.0",
         "react-geolocated": "^2.4.0",
         "react-google-maps": "^9.4.5",
+        "react-letter-morph": "0.0.5",
+        "react-polyline": "^1.0.0",
         "react-redux": "5.0.7",
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",

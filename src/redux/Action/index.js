@@ -1,4 +1,4 @@
-import { LOAD_ALL_PLASES, MAPS, DIRECTIONS } from "../Action/../constants";
+import { LOAD_ALL_PLASES, MAPS } from "../Action/../constants";
 
 export const loadAllplases = () => {
     return dispatch => {
@@ -21,12 +21,5 @@ export const maps = maps => {
     return {
         type: MAPS,
         payload: maps
-    };
-};
-
-export const directions = directions => {
-    return {
-        type: DIRECTIONS,
-        payload: directions
     };
 };

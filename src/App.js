@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Maps from "./components/Maps";
 import ListPlases from "./components/ListPlases";
-import Directions from "./components/Directions";
 
 class App extends Component {
     render() {
