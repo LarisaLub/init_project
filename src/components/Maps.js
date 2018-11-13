@@ -83,7 +83,6 @@ class Maps extends Component {
                     handleNewMarker={this.handleNewMarker}
                     newMarker={newMarker}
                 />
-                />
             </div>
         );
     }

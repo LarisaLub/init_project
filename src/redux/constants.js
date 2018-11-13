@@ -1,2 +1,9 @@
 export const LOAD_ALL_PLASES = "LOAD_ALL_PLASES";
 export const MAPS = "MAPS";
+export const REGISTER = "REGISTER";
+export const LOGIN_REQUESTING = "LOGIN_REQUESTING";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const CLIENT_UNSET = " CLIENT_UNSET";
+export const LOGOUT = "LOGOUT";
+export const NEW_GEOLOCATION = "NEW_GEOLOCATION";

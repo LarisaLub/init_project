@@ -1,0 +1,22 @@
+{
+    "page": 2,
+    "total": 12,
+    "total_pages": 2,
+    "data": [
+        {
+            "id": 4,
+            "first_name": "Eve",
+            "last_name": "Holt"
+        },
+        {
+            "id": 5,
+            "first_name": "Charles",
+            "last_name": "Morris"
+        },
+        {
+            "id": 6,
+            "first_name": "Tracey",
+            "last_name": "Ramos"
+        }
+    ]
+}

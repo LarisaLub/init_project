@@ -1,4 +1,4 @@
-import { LOAD_ALL_PLASES } from "../reducer/../constants";
+import { NEW_GEOLOCATION } from "../reducer/../constants";
 
 const defaultState = {
     plases: null
@@ -6,12 +6,13 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
     const { type, payload } = action;
-
+    console.log("payload2");
+    console.log(payload);
     switch (type) {
-        case LOAD_ALL_PLASES:
+        case NEW_GEOLOCATION:
             return {
                 ...state,
-                plases: payload.items
+                newgeolocation: payload.plases
             };
         default:
             return state;
