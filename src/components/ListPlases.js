@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { loadAllplases } from "../redux/Action";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import TextField from "@material-ui/core/TextField";
 
 const classes = {
     table: {
@@ -42,16 +40,6 @@ class ListPlases extends Component {
                     })}
                 </TableBody>
             </Table>
-            //     <TextField
-            //     id="outlined-email-input"
-            //     label="Email"
-            //     className={classes.textField}
-            //     type="email"
-            //     name="email"
-            //     autoComplete="email"
-            //     margin="normal"
-            //     variant="outlined"
-            //   />
         );
     }
 }

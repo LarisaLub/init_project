@@ -1,28 +1,10 @@
 import {
     LOAD_ALL_PLASES,
     MAPS,
-    LOGIN_REQUESTING,
-    NEW_GEOLOCATION
+    NEW_GEOLOCATION,
+    GET_CURRENT_LOC
 } from "../Action/../constants";
 import { put, call } from "redux-saga/effects";
-import { takeLatest } from "redux-saga/effects";
-
-// export const loadAllplases = () => {
-//     return dispatch => {
-//         fetch(
-//             "https://places.demo.api.here.com/places/v1/discover/search?at=50.4501%2C30.5234&q=restaurant&app_id=DemoAppId01082013GAL&app_code=AJKnXv84fjrb0KIHawS0Tg"
-//         )
-//             .then(res => {
-//                 return res.json();
-//             })
-//             .then(response =>
-//                 dispatch({
-//                     type: LOAD_ALL_PLASES,
-//                     payload: response
-//                 })
-//             );
-//     };
-// };
 
 export function* saga() {
     try {
@@ -60,27 +42,35 @@ export const newGeolocation = newGeolocation => {
     };
 };
 
-export function* sagaGeo() {
+export function* sagaGetCurrentLoc() {
     try {
         const location = yield call(() => {
-            return fetch(
-                "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-            )
-                .then(res => res.json())
-                .then(res => res.latLng);
+            return navigator.geolocation.getCurrentPosition(position => {
+                return {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            });
         });
-        console.log("location");
+        console.log("loc");
         console.log(location);
-        yield put(newGeolocation(location));
+        yield put(getCurrentLoc(location));
     } catch (error) {}
 }
 
-const loginRequest = function loginRequest({ email, password }) {
+export const getCurrentLoc = getCurrentLoc => {
     return {
-        type: LOGIN_REQUESTING,
-        email,
-        password
+        type: GET_CURRENT_LOC,
+        payload: getCurrentLoc
     };
 };
 
-export default loginRequest;
+// const loginRequest = function loginRequest({ email, password }) {
+//     return {
+//         type: LOGIN_REQUESTING,
+//         email,
+//         password
+//     };
+// };
+
+// export default loginRequest;

@@ -8,7 +8,6 @@ import {
     Marker
 } from "react-google-maps";
 import { selectPlases } from "../filter";
-import { compose, withProps, lifecycle } from "recompose";
 
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
@@ -55,16 +54,16 @@ class Maps extends Component {
             }
         });
     };
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(position => {
-            this.setState({
-                center: {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                }
-            });
-        });
-    }
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //         this.setState({
+    //             center: {
+    //                 lat: position.coords.latitude,
+    //                 lng: position.coords.longitude
+    //             }
+    //         });
+    //     });
+    // }
 
     render() {
         const { center, newMarker } = this.state;

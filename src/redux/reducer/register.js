@@ -1,45 +1,18 @@
-import { LOGIN_REQUESTING, LOGIN_SUCCESS, LOGIN_ERROR } from "../reducer/../constants";
-const initialState = {
-    requesting: false,
-    successful: false,
-    messages: [],
-    errors: []
+import { REGISTER } from "../reducer/../constants";
+
+const defaultState = {
+    maps: null
 };
 
-const reducer = function loginReducer(state = initialState, action) {
-    switch (action.type) {
-        case LOGIN_REQUESTING:
+export default (state = defaultState, action) => {
+    const { type, payload } = action;
+    switch (type) {
+        case REGISTER:
             return {
-                requesting: true,
-                successful: false,
-                messages: [{ body: "Logging in...", time: new Date() }],
-                errors: []
+                ...state,
+                maps: payload
             };
-
-        case LOGIN_SUCCESS:
-            return {
-                errors: [],
-                messages: [],
-                requesting: false,
-                successful: true
-            };
-
-        case LOGIN_ERROR:
-            return {
-                errors: state.errors.concat([
-                    {
-                        body: action.error.toString(),
-                        time: new Date()
-                    }
-                ]),
-                messages: [],
-                requesting: false,
-                successful: false
-            };
-
         default:
             return state;
     }
 };
-
-export default reducer;
