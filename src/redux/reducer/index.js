@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
-import plases from "./plases";
+import places from "./places";
 import maps from "./maps";
-import newgeolocation from "./newgeolocatin";
-import register from "./register";
+import authorization from "../modules/authorization";
+import listusers from "../modules/listusers";
+import location from "../modules/location";
+
 export default combineReducers({
-    plases,
+    places,
     maps,
-    newgeolocation,
-    register
+    authorization,
+    listusers,
+    location
 });

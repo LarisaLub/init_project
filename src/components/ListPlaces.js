@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
-const classes = {
+const plasses = {
     table: {
         minWidth: 500
     },
@@ -14,25 +14,29 @@ const classes = {
         overflowX: "auto"
     }
 };
+export default class ListPlases extends Component {
+    static propTypes = {
+        getPlases: PropTypes.func.isRequired,
+        places: PropTypes.array.isRequired
+    };
 
-class ListPlases extends Component {
     componentDidMount() {
-        this.props.onLoadAllArticles();
+        this.props.getPlaces();
     }
     render() {
-        const { plases } = this.props;
-        if (!plases) return null;
+        const { places } = this.props;
+
         return (
             <Table>
                 <TableBody>
-                    {plases.map(place => {
+                    {places.map(places => {
                         return (
-                            <TableRow key={place.id}>
+                            <TableRow key={places.id}>
                                 <TableCell component="th" scope="row">
                                     <NavLink
-                                        to={`/maps/${place.id}`}
+                                        to={`/maps/${places.id}`}
                                         activeStyle={{ color: "red" }}>
-                                        {place.title}
+                                        {places.title}
                                     </NavLink>
                                 </TableCell>
                             </TableRow>
@@ -43,22 +47,3 @@ class ListPlases extends Component {
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        plases: state.plases.plases
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onLoadAllArticles: () => {
-            //  dispatch(loadAllplases());
-        }
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ListPlases);

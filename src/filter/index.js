@@ -1,5 +1,5 @@
-export const selectPlases = (state, id) => {
-    console.log(state);
-    if (!state.plases.plases) return [];
-    return state.plases.plases.filter(item => item.id === id);
+export const selectPlaces = (state, id) => {
+    //console.log(state);
+    if (!state.places.places) return [];
+    return state.places.places.filter(item => item.id === id);
 };

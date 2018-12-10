@@ -5,13 +5,12 @@ module.exports = {
         es6: true
     },
     extends: "eslint:recommended",
-     parserOptions: {
+    parserOptions: {
         ecmaFeatures: {
             jsx: true
-        }
+        },
         ecmaVersion: 2018,
-        sourceType: "module"       
-       
+        sourceType: "module"
     },
     plugins: ["react"],
     rules: {
