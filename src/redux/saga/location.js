@@ -9,23 +9,10 @@ function* locationWorker() {
         );
 
         yield put(loadAllplaces(placesResponse.data.results.items));
-        yield call(getCurrentLocWorker);
-    } catch (error) {}
-}
-
-export function* getCurrentLocWorker() {
-    try {
-        const location = yield call(() => {
-            return navigator.geolocation.getCurrentPosition(position => {
-                return {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-            });
-        });
+        // yield call(getCurrentLocWorker);
     } catch (error) {}
 }
 
 export default function* locationWatcher() {
-    yield takeEvery(getPlaces, locationWorker, getCurrentLocWorker);
+    yield takeEvery(getPlaces, locationWorker);
 }

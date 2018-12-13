@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-
 import {
     withScriptjs,
     withGoogleMap,
@@ -8,7 +6,6 @@ import {
     Polyline,
     Marker
 } from "react-google-maps";
-import { selectPlaces } from "../filter";
 
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
@@ -18,7 +15,7 @@ const MyMapComponent = withScriptjs(
             onClick={evt => {
                 let lat = evt.latLng.lat();
                 let lng = evt.latLng.lng();
-                props.handleNewMarker(evt.latLng.lat(), evt.latLng.lng());
+                props.activeNewMarker(evt.latLng.lat(), evt.latLng.lng());
             }}>
             <Marker position={{ lat: props.lat, lng: props.lng }} />
             {!props.newMarker ? null : (
@@ -36,17 +33,17 @@ const MyMapComponent = withScriptjs(
     ))
 );
 
-class Maps extends Component {
+export default class Maps extends Component {
     state = {
         center: {
             lat: 0,
             lng: 0
         },
-        zoom: 7,
+        zoom: 20,
         newMarker: {},
         markerForRoute: {}
     };
-    handleNewMarker = (lat, lng) => {
+    activeNewMarker = (lat, lng) => {
         this.setState({
             newMarker: {
                 lat: lat,
@@ -54,20 +51,23 @@ class Maps extends Component {
             }
         });
     };
+
     componentDidMount() {
-        navigator.geolocation.getCurrentPosition(position => {
-            this.setState({
-                center: {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                }
-            });
-        });
+        this.props.getCurrentLocs();
+        //     navigator.geolocation.getCurrentPosition(position => {
+        //         this.setState({
+        //             center: {
+        //                 lat: position.coords.latitude,
+        //                 lng: position.coords.longitude
+        //             }
+        //         });
+        //     });
     }
 
     render() {
         const { center, newMarker } = this.state;
-
+        console.log("this.props", this.props);
+        return null;
         return (
             <div style={{ height: "70vh", width: "100%" }}>
                 <MyMapComponent
@@ -76,21 +76,13 @@ class Maps extends Component {
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `700px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
-                    lat={center.lat}
-                    lng={center.lng}
+                    lat={this.props.plase[0].position[0]}
+                    lng={this.props.plase[0].position[1]}
                     onClick={evt => {}}
-                    handleNewMarker={this.handleNewMarker}
+                    activeNewMarker={this.activeNewMarker}
                     newMarker={newMarker}
                 />
             </div>
         );
     }
 }
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        plase: selectPlaces(state, ownProps.match.params.id)
-    };
-};
-
-export default connect(mapStateToProps)(Maps);

@@ -6,7 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
-const plasses = {
+const plaсes = {
     table: {
         minWidth: 500
     },
@@ -14,18 +14,20 @@ const plasses = {
         overflowX: "auto"
     }
 };
-export default class ListPlases extends Component {
+export default class ListPlaсes extends Component {
     static propTypes = {
-        getPlases: PropTypes.func.isRequired,
-        places: PropTypes.array.isRequired
+        getPlaсes: PropTypes.func.isRequired,
+        places: PropTypes.array.isRequired,
+        activeLocation: PropTypes.object.isRequired
     };
 
     componentDidMount() {
         this.props.getPlaces();
     }
+
     render() {
         const { places } = this.props;
-
+        const { activeLocation } = this.props;
         return (
             <Table>
                 <TableBody>

@@ -22,11 +22,9 @@ function* authorizationWorker({ payload: { username, password } }) {
             }
         });
         const { token } = response.data;
-        // console.log(token);
+
         yield put(loginSuccess(token));
-    } catch (error) {
-        // console.log("authorizationWorker", error);
-    }
+    } catch (error) {}
 }
 
 export default function* authorizationWatcher() {

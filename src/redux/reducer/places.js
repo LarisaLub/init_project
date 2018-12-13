@@ -1,7 +1,8 @@
 import { LOAD_ALL_PLACES } from "../reducer/../constants";
 
 const defaultState = {
-    places: null
+    places: null,
+    activeLocation: null
 };
 
 export default (state = defaultState, action) => {
@@ -13,6 +14,12 @@ export default (state = defaultState, action) => {
                 ...state,
                 places: payload.items
             };
+        // case SET_ACTIVE_LOCATION:
+        //     return {
+        //         ...state,
+
+        //         activeLocation: payload
+        //     };
         default:
             return state;
     }

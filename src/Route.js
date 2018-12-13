@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Router, Route, Switch, NavLink } from "react-router-dom";
 import history from "./history";
-import Maps from "./components/Maps";
+import Maps from "./redux/containers/MapsContainer";
 import ListPlaces from "./redux/containers/ListPlaces";
 import Form from "./redux/containers/FormContainer";
 
