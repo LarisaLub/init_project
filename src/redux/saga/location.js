@@ -9,7 +9,7 @@ function* locationWorker() {
         );
 
         yield put(loadAllplaces(placesResponse.data.results.items));
-        // yield call(getCurrentLocWorker);
+        //yield call(getCurrentLocWorker);
     } catch (error) {}
 }
 

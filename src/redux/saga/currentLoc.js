@@ -1,24 +1,24 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import { getCurrentLocs, setCurrentLoc } from "../modules/location";
 
-function myAsyncFunction(url) {
-    return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(position => {
-            console.log("saga position", position);
-            return {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
+const getLocation = () =>
+    new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                let loc = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                return resolve(loc);
+            },
+            error => reject(error)
+        );
     });
-}
 
 function* getCurrentLocWorker() {
-    console.log("getCurrentLocWorker");
     try {
-        let location = yield myAsyncFunction();
+        let location = yield call(getLocation);
         yield put(setCurrentLoc(location));
-        console.log("saga location", location);
     } catch (error) {
         console.log(error, "error saga");
     }

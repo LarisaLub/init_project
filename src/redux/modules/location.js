@@ -11,26 +11,19 @@ export const setCurrentLoc = createAction("location/setCurrentLoc");
 const defaultState = {
     places: [],
     location: [],
-    сurrentLoc: { lat: 0, lng: 0 },
+    currentPosition: { lat: 0, lng: 0 },
     activeLocation: { lat: 0, lng: 0 }
 };
 
 export default handleActions(
     {
-        [setCurrentLoc]: (state, { payload }) => {
-            console.log(" payload", payload);
-            return {
-                ...state,
-                сurrentLoc: payload
-            };
-        },
-
+        [setCurrentLoc]: (state, { payload }) => ({
+            ...state,
+            currentPosition: payload
+        }),
         [loadAllplaces]: (state, { payload }) => ({
             ...state,
             places: payload
-        }),
-        [getCurrentLocs]: state => ({
-            ...state
         }),
         [setActiveLocation]: (state, { payload }) => ({
             ...state,
