@@ -79,3 +79,21 @@ input:valid {
 input:focus:invalid {
     outline: none;
 }
+/* .MyMapComponent {
+}
+div:loadingelement {
+    height: "100%";
+}
+
+.div {
+    height: "70vh";
+    width: "100%";
+}
+
+div:containerelement {
+    height: "700px";
+}
+
+.mapElement {
+    height: "100%";
+} */

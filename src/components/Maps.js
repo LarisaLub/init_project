@@ -6,6 +6,7 @@ import {
     Polyline,
     Marker
 } from "react-google-maps";
+import { URL_3 } from "../redux/constants";
 
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => {
@@ -45,10 +46,7 @@ export default class Maps extends Component {
     };
     activeNewMarker = (lat, lng) => {
         this.setState({
-            newMarker: {
-                lat: lat,
-                lng: lng
-            }
+            newMarker: { lat, lng }
         });
     };
 
@@ -58,15 +56,16 @@ export default class Maps extends Component {
     }
 
     render() {
-        const { center, newMarker } = this.state;
-        console.log("component props", this.props);
-        if (!this.props.currentPosition.lat || this.props.plaсe.length === 0) return null;
-        console.log("component props", this.props);
+        const { newMarker } = this.state;
+        if (!this.props.currentPosition.lat || this.props.plaсe.length === 0)
+            //&& this.props.currentPosition.lng
+            return null;
+
         return (
             <div style={{ height: "70vh", width: "100%" }}>
                 <MyMapComponent
                     isMarkerShown
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2FOJ-CCXg67ZLxNexgBAfDpwmDtWVYtI&callback=initMap"
+                    googleMapURL={URL_3}
                     loadingElement={<div style={{ height: "100%" }} />}
                     containerElement={<div style={{ height: "700px" }} />}
                     mapElement={<div style={{ height: "100%" }} />}
@@ -74,7 +73,6 @@ export default class Maps extends Component {
                     lng={this.props.plaсe[0].position[1]}
                     latCurrent={this.props.currentPosition.lat}
                     lngCurrent={this.props.currentPosition.lng}
-                    onClick={evt => {}}
                     activeNewMarker={this.activeNewMarker}
                     newMarker={newMarker}
                 />

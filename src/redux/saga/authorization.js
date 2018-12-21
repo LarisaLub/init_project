@@ -1,6 +1,7 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { loginSubmit, loginSuccess } from "../modules/authorization";
 import axios from "axios";
+import { URL_4 } from "../constants";
 
 function* authorizationWorker({ payload: { username, password } }) {
     const formdata = new FormData();
@@ -14,7 +15,7 @@ function* authorizationWorker({ payload: { username, password } }) {
     });
 
     try {
-        const response = yield axios("https://reqres.in/api/login", {
+        const response = yield axios(URL_4, {
             method: "POST",
             data: requestBody,
             headers: {

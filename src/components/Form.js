@@ -7,8 +7,10 @@ class Form extends Component {
         password: "",
 
         error: {
-            field: "",
-            text: ""
+            fieldEmail: "",
+            textEmail: "",
+            fieldPass: "",
+            textPass: ""
         }
     };
 
@@ -23,57 +25,60 @@ class Form extends Component {
         this.setState({
             [type]: value
         });
+
+        this.setState({
+            error: {
+                fieldEmail: this.state.email.length < 4 && "email",
+                textEmail: this.state.email.length < 4 && "email text error",
+                fieldPass: this.state.password.length < 4 && "password",
+                textPass: this.state.password.length < 4 && "password text error"
+            }
+        });
     };
 
     handleSubmit = event => {
         event.preventDefault();
 
-        if (this.state.email.length >= 4) {
-            //console.log("ок");
-        } else {
-            this.setState({
-                error: {
-                    field: "email",
-                    text: "email text error"
-                }
-            });
-        }
+        const {
+            error: { fieldEmail, fieldPass }
+        } = this.state;
 
-        if (this.state.password.length >= 4) {
-            // console.log("ок");
-        } else {
-            this.setState({
-                error: {
-                    field: "password",
-                    text: "password text error"
-                }
-            });
-        }
-
-        this.props.loginSubmit({
-            username: this.state.username,
-            password: this.state.password
+        this.setState({
+            error: {
+                fieldEmail: this.state.email.length < 4 && "email",
+                textEmail: this.state.email.length < 4 && "email text error",
+                fieldPass: this.state.password.length < 4 && "password",
+                textPass: this.state.password.length < 4 && "password text error"
+            }
         });
+
+        fieldEmail === false &&
+            fieldPass === false &&
+            this.props.loginSubmit({
+                username: this.state.email,
+                password: this.state.password
+            });
     };
 
     render() {
         if (this.props.loggedIn) {
             window.location.href = "/places";
         }
+        //console.log(this.state);
         return [
             <form onSubmit={this.handleSubmit}>
                 <label>
-                    username:
+                    email:
                     <input
-                        id="InputUsername"
+                        id="InputEmail"
                         type="text"
-                        data-type="username"
-                        value={this.state.username}
+                        data-type="email"
+                        value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    {this.state.error.field === "username" ? (
-                        <p className="errorText"> {this.state.error.text}</p>
-                    ) : null}
+                    {this.state.error.fieldEmail === "email" && (
+                        <p className="errorText"> {this.state.error.textEmail}</p>
+                    )}
                 </label>
                 <br />
                 <label>
@@ -85,13 +90,13 @@ class Form extends Component {
                         value={this.state.password}
                         onChange={this.handleChange}
                     />
-                    {this.state.error.field === "password" ? (
-                        <p className="errorText"> {this.state.error.text}</p>
-                    ) : null}
+                    {this.state.error.fieldPass === "password" && (
+                        <p className="errorText"> {this.state.error.textPass}</p>
+                    )}
                 </label>
                 <br />
                 <input type="submit" value="Submit" />
-                {this.props.loggedIn ? <p>{this.props.token}</p> : null}
+                {this.props.loggedIn && <p>{this.props.token}</p>}
             </form>,
             <ListUsers />
         ];
